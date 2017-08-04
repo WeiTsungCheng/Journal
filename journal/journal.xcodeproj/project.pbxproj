@@ -15,6 +15,7 @@
 		C54F97E41F34036F006DD2F0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C54F97E21F34036F006DD2F0 /* LaunchScreen.storyboard */; };
 		C57AFD6F1F340D6C007609A2 /* SetPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57AFD6E1F340D6C007609A2 /* SetPhotoViewController.swift */; };
 		C57AFD711F3440D8007609A2 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57AFD701F3440D8007609A2 /* TableViewCell.swift */; };
+		C57AFD751F3466DF007609A2 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = C57AFD741F3466DF007609A2 /* File.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		C54F97E51F34036F006DD2F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C57AFD6E1F340D6C007609A2 /* SetPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SetPhotoViewController.swift; path = ../SetPhotoViewController.swift; sourceTree = "<group>"; };
 		C57AFD701F3440D8007609A2 /* TableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		C57AFD741F3466DF007609A2 /* File.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				C57AFD701F3440D8007609A2 /* TableViewCell.swift */,
 				C54F97DA1F34036F006DD2F0 /* Main.storyboard */,
 				C54F97E01F34036F006DD2F0 /* Assets.xcassets */,
+				C57AFD741F3466DF007609A2 /* File.swift */,
 				C54F97E21F34036F006DD2F0 /* LaunchScreen.storyboard */,
 				C54F97E51F34036F006DD2F0 /* Info.plist */,
 				C54F97DD1F34036F006DD2F0 /* journal.xcdatamodeld */,
@@ -163,6 +166,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C57AFD711F3440D8007609A2 /* TableViewCell.swift in Sources */,
+				C57AFD751F3466DF007609A2 /* File.swift in Sources */,
 				C57AFD6F1F340D6C007609A2 /* SetPhotoViewController.swift in Sources */,
 				C54F97DF1F34036F006DD2F0 /* journal.xcdatamodeld in Sources */,
 				C54F97D91F34036F006DD2F0 /* ViewController.swift in Sources */,

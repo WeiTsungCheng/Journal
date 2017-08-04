@@ -10,25 +10,47 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
+
     @IBOutlet weak var tableView: UITableView!
     
-    var  destinationArray = [String]()
+    var destinationArray = [String]()
+    var dataArray = [Data]()
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let userDefaults = UserDefaults.standard
 
+//        print(destinationArray)
 //        userDefaults.removeObject(forKey: "info")
-//            print("〽️")
-//            print(destinationArray)
+
+       print(destinationArray)
 
         if let locations = userDefaults.object(forKey: "info") as? [String] {
+ print("〽️〽️〽️〽️〽️")
             destinationArray = locations
+ print("〽️〽️〽️〽️〽️")
+            }
 
-            print("〽️")
-            print(destinationArray)
+
+        if let photos = userDefaults.object(forKey: "photo") as? [Data] {
+
+                
+
+                    dataArray = photos
+ print("〽️")
+                print(dataArray)
+                    
+ print("〽️")
+
+
         }
+
+
+
+
 
     }
 
@@ -53,6 +75,8 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
 // swiftlint:enable force_cast
 
         cell.locationName.text = destinationArray[indexPath.row]
+
+//        cell.presentPhoto.image = UIImage(data: dataArray[indexPath.row])
 
 
         return cell

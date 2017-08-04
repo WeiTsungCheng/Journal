@@ -11,6 +11,8 @@ import UIKit
 class SetPhotoViewController: UIViewController {
 
     var locations = [String]()
+    var datas = [Data]()
+    var myPhoto = UIImage()
 
     @IBOutlet weak var writeLocation: UITextField!
     @IBAction func backList(_ sender: Any) {
@@ -22,6 +24,10 @@ class SetPhotoViewController: UIViewController {
 
 
     @IBAction func saveJournalInfo(_ sender: UIButton) {
+
+
+        let myUserDefaults = UserDefaults.standard
+
 
         self.view.endEditing(true)
 
@@ -35,7 +41,30 @@ class SetPhotoViewController: UIViewController {
 
         myUserDefaults.set(
            locations, forKey: "info")
+
+
+
+        let imageData = UIImageJPEGRepresentation(myPhoto, 100)
+
+        print("💠💠💠💠💠💠💠💠💠💠💠💠💠")
+        if imageData != nil {
+            datas.append(imageData!)
+
+            print(imageData)
+            print(datas)
+            print("💠💠💠💠💠💠💠💠💠💠💠💠💠")
+        } else {
+            return
+        }
+
+
+        myUserDefaults.set(imageData, forKey: "photo")
         myUserDefaults.synchronize()
+
+        
+
+
+
 
     }
 
@@ -87,7 +116,6 @@ class SetPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        myUserDefaults = UserDefaults()
 
         // create tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(gesture:)))
@@ -115,6 +143,7 @@ extension SetPhotoViewController : UIImagePickerControllerDelegate, UINavigation
         if let pickedPhoto = info[UIImagePickerControllerOriginalImage] as? UIImage {
 
             setPhoto.image = pickedPhoto
+            myPhoto = pickedPhoto
             setPhoto.contentMode = UIViewContentMode.scaleAspectFit
 
             self.dismiss(animated: true, completion: nil)
