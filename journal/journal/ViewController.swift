@@ -10,14 +10,31 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var  destinationArray = [String]()
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let userDefaults = UserDefaults.standard
+
+//        userDefaults.removeObject(forKey: "info")
+//            print("〽️")
+//            print(destinationArray)
+
+        if let locations = userDefaults.object(forKey: "info") as? [String] {
+            destinationArray = locations
+
+            print("〽️")
+            print(destinationArray)
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 }
 
@@ -25,11 +42,18 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+
+        return destinationArray.count
     }
 
+//swiftlint:disable force_cast
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+// swiftlint:enable force_cast
+
+        cell.locationName.text = destinationArray[indexPath.row]
+
 
         return cell
     }

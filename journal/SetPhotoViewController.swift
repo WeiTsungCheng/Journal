@@ -10,25 +10,36 @@ import UIKit
 
 class SetPhotoViewController: UIViewController {
 
+    var locations = [String]()
+
     @IBOutlet weak var writeLocation: UITextField!
     @IBAction func backList(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
  var myUserDefaults :UserDefaults!
     @IBOutlet weak var setPhoto: UIImageView!
-    @IBOutlet weak var uuu: UILabel!
+
 
     @IBAction func saveJournalInfo(_ sender: UIButton) {
 
         self.view.endEditing(true)
-        myUserDefaults.set(
-            writeLocation.text, forKey: "info")
-        myUserDefaults.synchronize()
 
+        if writeLocation.text != nil {
+        locations.append(writeLocation.text!)
+
+        } else {
+
+            return
+        }
+
+        myUserDefaults.set(
+           locations, forKey: "info")
+        myUserDefaults.synchronize()
 
     }
 
-    
+
     func imageTapped(gesture: UIGestureRecognizer) {
 
         if (gesture.view as? UIImageView) != nil {
@@ -86,15 +97,6 @@ class SetPhotoViewController: UIViewController {
         // make sure imageView can be interacted with by user
         setPhoto.isUserInteractionEnabled = true
 
-
-        if let info = myUserDefaults.object(forKey: "info") as? String {
-            uuu.text = info
-        } else {
-            uuu.text = "尚未儲存資訊"
-            uuu.textColor = UIColor.red
-        }
-
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -103,9 +105,6 @@ class SetPhotoViewController: UIViewController {
     }
 
 }
-
-
-
 
 extension SetPhotoViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 

@@ -26,7 +26,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="301" id="JfD-2f-Ryd">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="301" id="JfD-2f-Ryd" customClass="TableViewCell" customModule="journal" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="301"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JfD-2f-Ryd" id="mww-0T-Xuh">
@@ -44,8 +44,8 @@
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="sdfsadfasfasfdsasgafdgdsgasf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dCC-V9-Apq">
-                                                    <rect key="frame" x="87" y="210" width="236" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="locationname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u4m-4l-J02">
+                                                    <rect key="frame" x="83" y="202" width="103" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -54,7 +54,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="JB6-Wa-cfg" kind="presentation" id="bOj-Xc-AgG"/>
+                                            <outlet property="locationName" destination="u4m-4l-J02" id="RKW-yn-2al"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -72,8 +72,14 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="icon_plus" id="Pju-1n-htO">
                             <color key="tintColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <connections>
+                                <segue destination="JB6-Wa-cfg" kind="presentation" id="4vY-BH-dQs"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="715-lX-cdY" id="fmD-Y2-BkB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -129,13 +135,6 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HAM-b2-zBA">
-                                <rect key="frame" x="28" y="595" width="42" height="52"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="uZW-yp-zAS">
                                 <rect key="frame" x="19" y="419" width="318" height="158"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -149,7 +148,6 @@
                     </view>
                     <connections>
                         <outlet property="setPhoto" destination="SLw-lt-mrx" id="ZC0-9L-Zy3"/>
-                        <outlet property="uuu" destination="HAM-b2-zBA" id="LbT-ND-qsp"/>
                         <outlet property="writeLocation" destination="JmZ-AQ-kPg" id="KNm-wp-9v4"/>
                     </connections>
                 </viewController>
