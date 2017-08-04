@@ -10,14 +10,53 @@ import UIKit
 
 class ViewController: UIViewController {
 
+
+
+    @IBOutlet weak var tableView: UITableView!
+    
+    var destinationArray = [String]()
+    var dataArray = [Data]()
+
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        let userDefaults = UserDefaults.standard
+
+//        print(destinationArray)
+//        userDefaults.removeObject(forKey: "info")
+
+       print(destinationArray)
+
+        if let locations = userDefaults.object(forKey: "info") as? [String] {
+ print("〽️〽️〽️〽️〽️")
+            destinationArray = locations
+ print("〽️〽️〽️〽️〽️")
+            }
+
+
+        if let photos = userDefaults.object(forKey: "photo") as? [Data] {
+
+                
+
+                    dataArray = photos
+ print("〽️")
+                print(dataArray)
+                    
+ print("〽️")
+
+
+        }
+
+
+
+
+
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
 }
 
@@ -25,11 +64,20 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource {
 
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+
+        return destinationArray.count
     }
 
+//swiftlint:disable force_cast
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! TableViewCell
+// swiftlint:enable force_cast
+
+        cell.locationName.text = destinationArray[indexPath.row]
+
+//        cell.presentPhoto.image = UIImage(data: dataArray[indexPath.row])
+
 
         return cell
     }

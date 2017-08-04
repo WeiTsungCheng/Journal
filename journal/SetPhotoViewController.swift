@@ -10,25 +10,65 @@ import UIKit
 
 class SetPhotoViewController: UIViewController {
 
+    var locations = [String]()
+    var datas = [Data]()
+    var myPhoto = UIImage()
+
     @IBOutlet weak var writeLocation: UITextField!
     @IBAction func backList(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+
  var myUserDefaults :UserDefaults!
     @IBOutlet weak var setPhoto: UIImageView!
-    @IBOutlet weak var uuu: UILabel!
+
 
     @IBAction func saveJournalInfo(_ sender: UIButton) {
 
+
+        let myUserDefaults = UserDefaults.standard
+
+
         self.view.endEditing(true)
+
+        if writeLocation.text != nil {
+        locations.append(writeLocation.text!)
+
+        } else {
+
+            return
+        }
+
         myUserDefaults.set(
-            writeLocation.text, forKey: "info")
+           locations, forKey: "info")
+
+
+
+        let imageData = UIImageJPEGRepresentation(myPhoto, 100)
+
+        print("💠💠💠💠💠💠💠💠💠💠💠💠💠")
+        if imageData != nil {
+            datas.append(imageData!)
+
+            print(imageData)
+            print(datas)
+            print("💠💠💠💠💠💠💠💠💠💠💠💠💠")
+        } else {
+            return
+        }
+
+
+        myUserDefaults.set(imageData, forKey: "photo")
         myUserDefaults.synchronize()
+
+        
+
+
 
 
     }
 
-    
+
     func imageTapped(gesture: UIGestureRecognizer) {
 
         if (gesture.view as? UIImageView) != nil {
@@ -76,7 +116,6 @@ class SetPhotoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        myUserDefaults = UserDefaults()
 
         // create tap gesture recognizer
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(gesture:)))
@@ -85,15 +124,6 @@ class SetPhotoViewController: UIViewController {
         setPhoto.addGestureRecognizer(tapGesture)
         // make sure imageView can be interacted with by user
         setPhoto.isUserInteractionEnabled = true
-
-
-        if let info = myUserDefaults.object(forKey: "info") as? String {
-            uuu.text = info
-        } else {
-            uuu.text = "尚未儲存資訊"
-            uuu.textColor = UIColor.red
-        }
-
 
     }
 
@@ -104,9 +134,6 @@ class SetPhotoViewController: UIViewController {
 
 }
 
-
-
-
 extension SetPhotoViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     //取從手機取到的照片
@@ -116,6 +143,7 @@ extension SetPhotoViewController : UIImagePickerControllerDelegate, UINavigation
         if let pickedPhoto = info[UIImagePickerControllerOriginalImage] as? UIImage {
 
             setPhoto.image = pickedPhoto
+            myPhoto = pickedPhoto
             setPhoto.contentMode = UIViewContentMode.scaleAspectFit
 
             self.dismiss(animated: true, completion: nil)
